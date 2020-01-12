@@ -26,5 +26,8 @@
     "eslint-plugin-promise": "^4.1.1",
     "prettier": "^1.18.2",
     "requestretry": "^4.0.0"
+  },
+  "dependencies": {
+    "ejs": "^3.0.1"
   }
 }
