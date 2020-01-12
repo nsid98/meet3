@@ -19,6 +19,7 @@ var fs = require('fs');
 const express = require('express');
 
 const app = express();
+  
 
 // app.get('/', (req, res) => {
 //   res
@@ -47,5 +48,19 @@ app.listen(PORT, () => {
   console.log('Press Ctrl+C to quit.');
 });
 // [END gae_node_request_example]
+const Firestore = require('@google-cloud/firestore');
+
+const db = new Firestore({
+  projectId: 'meet-264900',
+  keyFilename: 'meet-94f2ef8e9251.json',
+});
+
+let docRef = db.collection('users').doc('alovelace');
+
+// let setAda = docRef.set({
+//   first: 'Ada',
+//   last: 'Lovelace',
+//   born: 1815
+// });
 
 module.exports = app;
