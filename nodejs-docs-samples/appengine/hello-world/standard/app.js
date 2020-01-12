@@ -18,13 +18,37 @@
 const express = require('express');
 
 const app = express();
-  
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
-app.get('/', (req, res) => {
-  res
-    .status(200)
-    .send('Hello, world, again!')
-    .end();
+var fs = require('fs');
+
+// app.get('/', (req, res) => {
+//   res.writeHead(200, {'Content-Type':'text/html'});
+  
+//   fs.readFile('./index.html',null, function(error,data){
+//     if (error){
+//       res.writeHead(404);
+//       res.write('Fine not found');
+//     } else {
+//       var name = 'hello';
+//       res.write(data);
+//     }
+//     res.end();
+//   });
+// });
+
+// app.get('/', function(req, res) {
+//   var name = 'hello';
+//   res.render("./index", {name:name});
+// });
+
+app.get('/', function(req, res) {
+  var data = {
+      name:'hello'
+  };
+
+  res.render('./index', data);
 });
 
 // Start the server
