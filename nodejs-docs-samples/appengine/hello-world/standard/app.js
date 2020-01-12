@@ -13,17 +13,31 @@
 // limitations under the License.
 
 'use strict';
+var fs = require('fs');
 
 // [START gae_node_request_example]
 const express = require('express');
 
 const app = express();
 
+// app.get('/', (req, res) => {
+//   res
+//     .status(200)
+//     .send('Hello, world, again!')
+//     .end();
+// });
+
 app.get('/', (req, res) => {
-  res
-    .status(200)
-    .send('Hello, world, again!')
-    .end();
+  res.writeHead(200, {'Content-Type':'text/html'});
+  fs.readFile('./ui/main-page.html', null, function(error,data){
+    if (error){
+      res.writeHead(404);
+      res.write('File not found');
+    } else {
+      res.write(data);
+    }
+    res.end();
+  });
 });
 
 // Start the server
