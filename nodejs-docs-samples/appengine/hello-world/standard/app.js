@@ -27,6 +27,7 @@ const app = express();
 //     .send('Hello, world, again!')
 //     .end();
 // });
+app.use(express.static('ui'));
 
 app.get('/', (req, res) => {
   res.writeHead(200, {'Content-Type':'text/html'});
